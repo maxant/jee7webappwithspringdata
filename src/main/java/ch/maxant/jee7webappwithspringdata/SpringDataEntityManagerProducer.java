@@ -1,11 +1,11 @@
 package ch.maxant.jee7webappwithspringdata;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@RequestScoped
+@Dependent //requestscope here doesn't work because jboss fails to find an EM to eagerly setup the UserRepository
 public class SpringDataEntityManagerProducer {
 
     @PersistenceContext(name = "primary")
